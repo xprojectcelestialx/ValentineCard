@@ -96,7 +96,7 @@ body {
 /* Buttons */
 #buttons {
   position: fixed;
-  bottom: 229px;
+  bottom: 221px;
   left: 53%;
   transform: translateX(-50%) scale(0.9);
   gap: 0px;
@@ -157,4 +157,5 @@ body {
     transform: translateY(110vh);
     opacity: 0;
   }
+
 }
