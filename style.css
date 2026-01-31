@@ -1,0 +1,160 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("body-bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  overflow: hidden;
+}
+
+#valentine {
+  margin-left: 3%;
+  width: 400px;
+  height: 320px;
+  position: relative;
+  perspective: 1200px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cover Page */
+
+#cover-page {
+  transform-origin: left center;
+  color: white;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  border: 1px solid #ffcdce;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.8s ease;
+  backface-visibility: hidden;
+  background: url("front-bg.jpg") center / cover no-repeat;
+}
+
+#waiting {
+  margin-left: 22%;
+  margin-top: 70%;
+  width: 50%;
+  height: 30%;
+}
+
+/* Message Inside */
+
+#message-inside {
+  background: #fff;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  background: #fff0f3;
+  border: 1px solid #ffcdce;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: visible;
+  background: url("front-bg.jpg") center / cover no-repeat;
+}
+
+#valentine:hover #cover-page {
+  transform: rotateY(-160deg);
+  transform-origin: left center;
+  width: 50%;
+  height: 100%;
+  border: 1px solid #ffcdce;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.8s ease;
+  backface-visibility: visible;
+}
+
+#letter-bg {
+  margin-left: 0%;
+  margin-top: 5%;
+  width: 70%;
+  height: 70%;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+#letter-bg.zoom {
+  transform: scale(2.5);
+  z-index: 1;
+  margin-top: -3%;
+}
+
+/* Buttons */
+#buttons {
+  position: fixed;
+  bottom: 229px;
+  left: 53%;
+  transform: translateX(-50%) scale(0.9);
+  gap: 0px;
+  z-index: 10000;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 2s ease, transform 1s ease;
+}
+
+#buttons.show {
+  opacity: 0.2;
+  transform: translateX(-50%) scale(1);
+  pointer-events: auto;
+}
+
+#buttons button {
+  padding: 20px 35px;
+  width: 60%;
+  height: 50%;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+#yesBtn {
+  margin-left: -32%;
+  margin-right: 50%;
+  margin-bottom: 1%;
+  background-image: url("yes.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#noBtn {
+  margin-left: 14%;
+  background-image: url("no.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Hearts */
+
+.heart {
+  position: fixed;
+  top: -20px;
+  font-size: 20px;
+  color: pink;
+  animation: fall linear forwards;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}

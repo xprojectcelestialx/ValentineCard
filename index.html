@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="bgm" loop>
+        <source src="bg-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="envelope">
+        <div class="flap">
+        </div>
+        <div class="body">
+        </div>
+    </div>
+
+    <div id="valentine">
+        <div id="message-inside">
+            <img src="letter-bg.jpg" alt="letter-bg" id="letter-bg">
+        </div>
+        <div id="cover-page">
+            <img src="waiting.gif" alt="waiting" id="waiting">
+        </div>
+    </div>
+
+    <div id="buttons">
+        <button id="yesBtn"></button>
+        <button id="noBtn"></button>
+    </div>
+
+    <script>
+    document.getElementById("yesBtn").addEventListener("click", function() {
+        emailjs.send("service_4tc357h", "template_axksum7", {
+            response: "She said YES 💖",
+        }).then(() => {
+            alert("Email sent!");
+        }, (error) => {
+            alert("Failed: " + error.text);
+        });
+    });
+
+    document.getElementById("noBtn").addEventListener("click", function() {
+        emailjs.send("service_4tc357h", "template_axksum7", {
+            response: "She said NO 💔",
+        }).then(() => {
+            alert("Email sent!");
+        }, (error) => {
+            alert("Failed: " + error.text);
+        });
+    });
+    </script>
+
+    <div class="hearts"></div>
+    
+    <script>
+
+        document.body.addEventListener("click", () => {
+        const music = document.getElementById("bgm");
+        music.play();
+        }, { once: true });
+    
+        const buttons = document.getElementById("buttons");
+
+        document.getElementById("letter-bg").onclick = function () {
+        this.classList.toggle("zoom");
+        buttons.classList.toggle("show", this.classList.contains("zoom"));
+        };
+
+        function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+        heart.style.fontSize = (14 + Math.random() * 20) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+        }
+
+        setInterval(createHeart, 200);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+        emailjs.init("0nuYkZ1eqtPwuPhFO");
+        })();
+    </script>
+</body>
+</html>
